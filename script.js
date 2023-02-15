@@ -15,18 +15,20 @@ output.style.display = "flex";
 output.style.flexDirection = "column";
 output.style.gap = "30px";
 
-fetch("cars.json")
-    .then(res => res.json())
-    .then(data => {
+function getDataAndDisplay() {
+    fetch("cars.json")
+        .then(res => res.json())
+        .then(data => {
 
-        for (let i = 0; i < data.length; i++) {
-            const brand = data[i].brand;
-            const models = data[i].models;
-            createCard(brand, models);
-        }
+            for (let i = 0; i < data.length; i++) {
+                const brand = data[i].brand;
+                const models = data[i].models;
+                createCard(brand, models);
+            }
 
-    })
-    .catch(error => alert(error));
+        })
+        .catch(error => alert(error));
+}
 
 function createCard(brand, model) {
     const carCard = document.createElement("div");
@@ -40,11 +42,10 @@ function createCard(brand, model) {
         const modelLiItem = document.createElement("li");
         modelUl.append(modelLiItem);
         modelLiItem.textContent = model[i];
-        console.log(model[i])
         modelLiItem.style.fontSize = "20px";
         modelLiItem.style.textAlign = "center";
     }
-
+    // styles
     modelh3.textContent = `Models:`;
     modelh3.style.fontSize = "24px";
     modelh3.style.borderBottom = "1px solid black";
@@ -63,3 +64,5 @@ function createCard(brand, model) {
     modelUl.style.flexDirection = "column";
     modelUl.style.gap = "8px";
 }
+
+getDataAndDisplay();
