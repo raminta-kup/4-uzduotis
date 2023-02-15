@@ -28,7 +28,6 @@ fetch("cars.json")
     })
     .catch(error => alert(error));
 
-
 function createCard(brand, model) {
     const carCard = document.createElement("div");
     const carBrand = document.createElement("h2");
@@ -39,13 +38,13 @@ function createCard(brand, model) {
 
     for (let i = 0; i < model.length; i++) {
         const modelLiItem = document.createElement("li");
-        
         modelUl.append(modelLiItem);
         modelLiItem.textContent = model[i];
         console.log(model[i])
         modelLiItem.style.fontSize = "20px";
         modelLiItem.style.textAlign = "center";
     }
+
     modelh3.textContent = `Models:`;
     modelh3.style.fontSize = "24px";
     modelh3.style.borderBottom = "1px solid black";
