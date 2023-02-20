@@ -18,18 +18,10 @@ function getDataAndDisplay() {
             for (let i = 0; i < data.length; i++) {
                 const brand = data[i].brand;
                 const models = data[i].models;
-                styleOutput();
                 createCard(brand, models);
             }
         })
         .catch(error => alert(error));
-}
-
-function styleOutput() {
-    output.style.margin = "40px 0 40px 0";
-    output.style.display = "flex";
-    output.style.flexDirection = "column";
-    output.style.gap = "30px";
 }
 
 function createCard(brand, model) {
@@ -37,6 +29,13 @@ function createCard(brand, model) {
     const carBrand = document.createElement("h2");
     const modelUl = document.createElement("ul");
     const modelh3 = document.createElement("h3");
+    carCard.classList.add("car-card");
+    modelUl.classList.add("model-ul");
+    modelh3.classList.add("model-h3");
+    modelh3.textContent = "Models:";
+    carBrand.style.fontSize = "30px";
+    carBrand.textContent = `Brand: ${brand}`;
+
     output.append(carCard);
     carCard.append(carBrand, modelh3, modelUl);
     
@@ -47,24 +46,6 @@ function createCard(brand, model) {
         modelLiItem.style.fontSize = "20px";
         modelLiItem.style.textAlign = "center";
     }
-    // styles
-    modelh3.textContent = "Models:";
-    modelh3.style.fontSize = "24px";
-    modelh3.style.borderBottom = "1px solid black";
-    modelh3.style.paddingBottom = "4px";
-    carBrand.textContent = `Brand: ${brand}`;
-    modelUl.style.listStyleType = "none";
-    carCard.style.backgroundColor = "#E6EFE9";
-    carCard.style.padding = "36px";
-    carCard.style.borderRadius = "16px";
-    carCard.style.display = "flex";
-    carCard.style.flexDirection = "column";
-    carCard.style.alignItems = "center";
-    carCard.style.gap = "24px";
-    carBrand.style.fontSize = "30px";
-    modelUl.style.display = "flex";
-    modelUl.style.flexDirection = "column";
-    modelUl.style.gap = "8px";
 }
 
 getDataAndDisplay();
