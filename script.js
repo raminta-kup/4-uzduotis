@@ -10,24 +10,26 @@ bent minimalų stilių;
 -------------------------------------------------------------------------- */
 
 const output = document.querySelector("#output");
-output.style.marginTop = "40px";
-output.style.display = "flex";
-output.style.flexDirection = "column";
-output.style.gap = "30px";
 
 function getDataAndDisplay() {
     fetch("cars.json")
         .then(res => res.json())
         .then(data => {
-
             for (let i = 0; i < data.length; i++) {
                 const brand = data[i].brand;
                 const models = data[i].models;
+                styleOutput();
                 createCard(brand, models);
             }
-
         })
         .catch(error => alert(error));
+}
+
+function styleOutput() {
+    output.style.margin = "40px 0 40px 0";
+    output.style.display = "flex";
+    output.style.flexDirection = "column";
+    output.style.gap = "30px";
 }
 
 function createCard(brand, model) {
@@ -37,7 +39,7 @@ function createCard(brand, model) {
     const modelh3 = document.createElement("h3");
     output.append(carCard);
     carCard.append(carBrand, modelh3, modelUl);
-
+    
     for (let i = 0; i < model.length; i++) {
         const modelLiItem = document.createElement("li");
         modelUl.append(modelLiItem);
@@ -46,7 +48,7 @@ function createCard(brand, model) {
         modelLiItem.style.textAlign = "center";
     }
     // styles
-    modelh3.textContent = `Models:`;
+    modelh3.textContent = "Models:";
     modelh3.style.fontSize = "24px";
     modelh3.style.borderBottom = "1px solid black";
     modelh3.style.paddingBottom = "4px";
@@ -54,10 +56,10 @@ function createCard(brand, model) {
     modelUl.style.listStyleType = "none";
     carCard.style.backgroundColor = "#E6EFE9";
     carCard.style.padding = "36px";
-    carCard.style.borderRadius = "16px"
+    carCard.style.borderRadius = "16px";
     carCard.style.display = "flex";
     carCard.style.flexDirection = "column";
-    carCard.style.alignItems = "center"
+    carCard.style.alignItems = "center";
     carCard.style.gap = "24px";
     carBrand.style.fontSize = "30px";
     modelUl.style.display = "flex";
